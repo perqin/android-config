@@ -4,6 +4,10 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'android-config'
+
+androidConfig.loadExt()
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -15,6 +19,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField("String", "acProp", "\"$ac.acProp\"")
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -22,7 +29,7 @@ android {
     }
 }
 
-apply plugin: 'android-config'
+androidConfig.loadAndroid()
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
