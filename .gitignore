@@ -12,6 +12,8 @@
 
 # Package Files #
 *.jar
+!/example/gradle/wrapper/*.jar
+!/example/app/src/main/libs/*.jar
 *.war
 *.nar
 *.ear
